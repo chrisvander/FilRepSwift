@@ -16,7 +16,7 @@ public struct FilRepResponse: Codable {
     }
 }
 
-public struct Miner: Codable {
+public class Miner: Codable {
     let id: Int
     let address: String
     let status: Bool
@@ -25,25 +25,33 @@ public struct Miner: Codable {
     let rawPower: String
     let qualityAdjPower: String
     let isoCode: String
-    let city: String
-    let region: String
+    let region: Region
     let freeSpace: String
     let storageDeals: MinerStorageDeals
     let scores: MinerScores
     
-    public struct MinerStorageDeals: Codable {
+    let rank: String
+    let regionRank: String
+    
+    public class MinerStorageDeals: Codable {
         let total: Int
         let noPenalties: Int
-        let successRate: Float
+        let successRate: String
         let averagePrice: String
         let dataStored: String
         let slashed: Int
     }
     
-    public struct MinerScores: Codable {
-        let total: Int
-        let uptime: Int
-        let storageDeals: Int
-        let committeedSectorsProofs: Int
+    public class MinerScores: Codable {
+        let total: String
+        let uptime: String
+        let storageDeals: String
+        let committedSectorsProofs: String
     }
 }
+
+protocol StringRepresentable: CustomStringConvertible {
+    init?(_ string: String)
+}
+
+extension Int: StringRepresentable {}
