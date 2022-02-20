@@ -1,3 +1,3 @@
-# FilRepSwift
+# FilRep API - Swift Wrapper
 
-A description of this package.
+A Swift wrapper around the [filrep.io](https://filrep.io) API.

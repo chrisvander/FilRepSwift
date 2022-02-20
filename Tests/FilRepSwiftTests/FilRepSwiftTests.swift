@@ -1,11 +1,10 @@
 import XCTest
 @testable import FilRepSwift
 
+@available(macOS 12.0, *)
 final class FilRepSwiftTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(FilRepSwift().text, "Hello, World!")
+    func testExample() async throws {
+        let miners = try await FilRepSwift().getMiners(limit: 10)
+        print(miners)
     }
 }
